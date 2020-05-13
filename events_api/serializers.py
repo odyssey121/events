@@ -68,7 +68,9 @@ class RegisterSerializer(serializers.Serializer):
 
 # МОЙ СЕРИАЛИЗАТОР ДЛЯ СОБЫТИЙ
 class EventSerializer(serializers.ModelSerializer):
+    # event_date = serializers.DateTimeField(format="%H:%M:%S || %d-%m-%Y",)
+
     class Meta:
         model = Event
         fields = '__all__'
-        read_only_fields = ('id','author')
+        read_only_fields = ('id', 'author')

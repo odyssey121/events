@@ -1,17 +1,38 @@
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, generics, mixins, filters
 from rest_framework.authentication import TokenAuthentication, BasicAuthentication, SessionAuthentication
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from django_filters import rest_framework as filters1
+from events_api.filter import EventFilter
 from events_api.models import Event
 from events_api.permissions import IsAuthorOfEvents
 from events_api.serializers import EventSerializer
 from rest_framework.response import Response
 
 
-class EventGenericView(viewsets.ModelViewSet):
+# import django_filters.rest_framework
+
+
+class EventGenericView(viewsets.GenericViewSet, mixins.ListModelMixin,
+                       mixins.CreateModelMixin, mixins.RetrieveModelMixin):
     authentication_classes = (TokenAuthentication, BasicAuthentication, SessionAuthentication)
-    queryset = Event.objects.all()
     serializer_class = EventSerializer
+    # queryset = Event.objects.all()
     auth_methods = ('POST', 'PUT', 'DELETE', 'PATCH')
+    search_fields = ['title']
+    filter_backends = (filters.SearchFilter, filters1.DjangoFilterBackend)
+    filter_class = EventFilter
+
+    def get_queryset(self):
+        queryset = Event.objects.all()
+        # title = self.request.query_params.get('title').strip()
+        event_date = self.request.query_params.get('event_date')
+
+        if event_date:
+            queryset.filter(event_date__contains=event_date)
+
+        # if date_event:
+
+        return queryset
 
     def get_permissions(self):
         if self.request.method in self.auth_methods:

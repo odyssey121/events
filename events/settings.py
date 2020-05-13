@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_auth',
     'allauth.account',
     'rest_auth.registration',
-    'allauth.socialaccount'
+    'allauth.socialaccount',
+    'django_filters'
 
 ]
 
@@ -51,7 +52,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication'],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated', ]
+        'rest_framework.permissions.IsAuthenticated', ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 AUTHENTICATION_BACKENDS = (
@@ -168,3 +170,8 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'events_api.serializers.UserSerializer',
     # 'TOKEN_SERIALIZER': 'path.to.custom.TokenSerializer',
 }
+# FILTER TEST
+SEARCH_PARAM = 'filter'  # one param for filter query
+# REST_FRAMEWORK = {
+#     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+# }
