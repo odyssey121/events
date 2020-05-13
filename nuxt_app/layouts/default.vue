@@ -16,6 +16,10 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   components: { TheHeader, TheSideNav },
   mounted() {
+    const token = localStorage.getItem('events_spa_token');
+    if(token){
+      this.$store.dispatch('auth/getUser');
+    }
     this.$store.subscribe((mutation, state) => {
       switch (mutation.type) {
         case "auth/SET_USER":

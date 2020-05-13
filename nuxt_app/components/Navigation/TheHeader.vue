@@ -6,30 +6,24 @@
         <nuxt-link to="/">Event$</nuxt-link>
       </div>
       <div class="navigation-items">
-        <q-tabs v-if="User" active-color="orange" style="height:100%;">
+        <q-tabs v-show="getUser" active-color="orange" style="height:100%;">
           <q-route-tab to="/" label="События" exact />
           <q-route-tab to="/create" label="Создать событие" exact />
         </q-tabs>
-        <q-tabs v-else active-color="orange" style="height:100%;">
-          <q-route-tab to="/auth" label="Авторизация" exact />
-        </q-tabs>
-        <q-tabs v-show="User" active-color="orange" style="height:100%;"></q-tabs>
-        <q-tabs @click="logout" v-show="User" active-color="orange" style="height:100%;">
-          <q-route-tab to label="Выход" exact />
-        </q-tabs>
-        <!-- <ul class="nav-list">
-          <li class="nav-item">
-            <nuxt-link to="/posts">Blog</nuxt-link>
-          </li>
 
-          <li class="nav-item">
-            <nuxt-link to="/about">About</nuxt-link>
-          </li>
-
-          <li class="nav-item">
-            <nuxt-link to="/admin">Admin</nuxt-link>
-          </li>
-        </ul>-->
+        <ul class="nav-list">
+          <q-tabs
+            v-show="getUser"
+            active-color="orange"
+            style="height:100%;"
+          ></q-tabs>
+          <q-tabs v-show="!getUser" active-color="orange" style="height:100%;">
+            <q-route-tab to="/auth" label="Авторизация" exact />
+          </q-tabs>
+          <q-tabs @click="logout" v-show="getUser" active-color="orange" style="height:100%;">
+            <q-route-tab to label="Выход" exact />
+          </q-tabs>
+        </ul>
       </div>
     </header>
   </div>
@@ -41,7 +35,7 @@ export default {
   name: "TheHeader",
   components: { TheSideNavToggle },
   computed: {
-    User() {
+    getUser() {
       return this.$store.getters["auth/getUser"];
     }
   },

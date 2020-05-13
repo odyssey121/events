@@ -36,7 +36,12 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/moment'
   ],
+  moment: {
+    locales: ['ru'],
+    defaultTimezone: 'Europe/Moscow'
+  },
   /*
   ** Nuxt.js modules
   */
@@ -56,6 +61,8 @@ export default {
     // animations: ["fadeIn", "fadeOut"],
     framework: {
       iconSet: "fontawesome-v5",
+      lang: 'rus',
+      
       // config: {
       //   brand: {
       //     primary: "#ffffff",
@@ -63,6 +70,15 @@ export default {
       //   },
       // },
       components: [
+        'QTabPanels',
+        'QTabPanel',
+        'QPopupProxy',
+        'QSplitter',
+        "QTime",
+        'QTh',
+        'QTr',
+        'QTd',
+        'QSlideItem',
         "QList",
         "QItem",
         "QItemSection",
@@ -77,7 +93,12 @@ export default {
         "QIcon",
         "QBtn",
         "QBtnToggle",
-        'Notify'
+        'Notify',
+        'QTable',
+        'QDate'
+      ],
+      directives: [
+        'ClosePopup'
       ],
       // directives: ["ClosePopup"],
       // plugins: ["Cookies"],
