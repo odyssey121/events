@@ -1,0 +1,82 @@
+@import url('./fonts.css');
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--Livvic);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    border-style: none;
+}
+
+.post-title {
+    font-family: var(--Lexend);
+    font-size: 2.5rem;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+@media (min-width: 768px) {
+    .container, .the-header {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container, .the-header {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container, .the-header {
+        width: 1170px;
+    }
+}
+
+.container, .the-header {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+:root {
+    --Abel: 'Abel', cursive;
+    --Anton: 'Anton', cursive;
+    --Josefin: 'Josefin', cursive;
+    --Lexend: 'Lexend', cursive;
+    --Livvic: 'Livvic', cursive;
+    /* Theme colors */
+    --text-grey: #3f4954;
+    --text-light: #686666da;
+    --bg-color: #f0f2f5;
+    --active-color: #ff9800;
+    --white: #ffffff;
+    --midnight: #104f55;
+    /* Gradient color */
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
