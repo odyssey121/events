@@ -12,7 +12,8 @@ from rest_framework.response import Response
 # import django_filters.rest_framework
 
 
-class EventGenericView(viewsets.GenericViewSet, mixins.ListModelMixin,
+class EventGenericView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.UpdateModelMixin,
+                       mixins.DestroyModelMixin,
                        mixins.CreateModelMixin, mixins.RetrieveModelMixin):
     authentication_classes = (TokenAuthentication, BasicAuthentication, SessionAuthentication)
     serializer_class = EventSerializer
@@ -23,15 +24,7 @@ class EventGenericView(viewsets.GenericViewSet, mixins.ListModelMixin,
     filter_class = EventFilter
 
     def get_queryset(self):
-        queryset = Event.objects.all()
-        # title = self.request.query_params.get('title').strip()
-        event_date = self.request.query_params.get('event_date')
-
-        if event_date:
-            queryset.filter(event_date__contains=event_date)
-
-        # if date_event:
-
+        queryset = Event.objects.all().filter(author=self.request.user)
         return queryset
 
     def get_permissions(self):

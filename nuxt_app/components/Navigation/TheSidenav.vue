@@ -6,22 +6,13 @@
         <q-list bordered class="nav-list" @click="$emit('close')">
           <q-item>
             <q-item-section>
-              <nuxt-link to="/">WD BLOG</nuxt-link>
+              <nuxt-link to="/">Event$</nuxt-link>
             </q-item-section>
           </q-item>
           <q-item>
             <q-item-section>
-              <nuxt-link to="/posts">Blog</nuxt-link>
+              <nuxt-link to="/create">Создать событие</nuxt-link>
             </q-item-section>
-          </q-item>
-
-          <q-item>
-            <q-item-section>
-              <nuxt-link to="/about">About</nuxt-link>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section>Avatar-type icon</q-item-section>
           </q-item>
           <!-- <li class="nav-item"><nuxt-link to="/posts">Blog</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>

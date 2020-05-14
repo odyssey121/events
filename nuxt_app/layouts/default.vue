@@ -16,19 +16,31 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   components: { TheHeader, TheSideNav },
   mounted() {
-    const token = localStorage.getItem('events_spa_token');
-    if(token){
-      this.$store.dispatch('auth/getUser');
+    const token = localStorage.getItem("events_spa_token");
+    if (token) {
+      this.$store.dispatch("auth/getUser");
     }
     this.$store.subscribe((mutation, state) => {
       switch (mutation.type) {
         case "auth/SET_USER":
-          if (state.auth.user !== null) {
+          if (
+            state.auth.user !== null &&
+            this.$router.currentRoute.path === "/auth"
+          ) {
             this.$router.push("/");
             this.$q.notify({
               message: `вы авторизировались с именем пользователя: ${state.auth.user.username}`
             });
           }
+          break;
+        case "auth/CLEAR_TOKEN":
+          if (state.auth.user === null) {
+            this.$router.push("/auth");
+          }
+          break;
+
+        default:
+          break;
       }
     });
   },

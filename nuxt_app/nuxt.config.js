@@ -62,7 +62,7 @@ export default {
     framework: {
       iconSet: "fontawesome-v5",
       lang: 'rus',
-      
+
       // config: {
       //   brand: {
       //     primary: "#ffffff",
@@ -70,6 +70,7 @@ export default {
       //   },
       // },
       components: [
+        'QBadge',
         'QTabPanels',
         'QTabPanel',
         'QPopupProxy',

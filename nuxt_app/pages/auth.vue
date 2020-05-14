@@ -12,7 +12,7 @@
         ]"
       />
     </div>
-    <q-form @reset="onReset" class="q-gutter-md">
+    <q-form @reset="onReset" class="q-gutter-md" @submit.prevent="onSubmit">
       <q-input
         filled
         v-model="email"
@@ -50,7 +50,7 @@
       </q-input>
 
       <q-input
-        v-show="!isLogin"
+        v-if="!isLogin"
         v-model="password2"
         filled
         :type="isPwd ? 'password' : 'text'"
@@ -70,14 +70,14 @@
         </template>
       </q-input>
 
-      <div class="q-pa-md btn-bottom">
-        <q-btn type="submit" color="primary" style="width:224px;" @click="onSubmit">
+
+        <q-btn type="submit" color="primary" style="width:224px;">
           {{
           isLogin ? "Логин" : "Регистрация"
           }}
         </q-btn>
         <q-btn label="сброс" type="reset" color="primary" flat class="q-ml-sm" />
-      </div>
+
     </q-form>
   </div>
 </template>

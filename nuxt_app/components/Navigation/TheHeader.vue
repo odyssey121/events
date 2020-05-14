@@ -8,15 +8,11 @@
       <div class="navigation-items">
         <q-tabs v-show="getUser" active-color="orange" style="height:100%;">
           <q-route-tab to="/" label="События" exact />
-          <q-route-tab to="/create" label="Создать событие" exact />
+          <q-route-tab to="event/create" label="Создать событие" exact />
         </q-tabs>
 
         <ul class="nav-list">
-          <q-tabs
-            v-show="getUser"
-            active-color="orange"
-            style="height:100%;"
-          ></q-tabs>
+          <q-tabs v-show="getUser" active-color="orange" style="height:100%;"></q-tabs>
           <q-tabs v-show="!getUser" active-color="orange" style="height:100%;">
             <q-route-tab to="/auth" label="Авторизация" exact />
           </q-tabs>
@@ -41,9 +37,7 @@ export default {
   },
   methods: {
     logout() {
-      this.$store
-        .dispatch("auth/unregister")
-        .then(() => this.$router.push("/auth"));
+      this.$store.dispatch("auth/unregister");
     }
   }
 };

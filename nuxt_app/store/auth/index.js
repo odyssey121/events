@@ -64,20 +64,10 @@ export const mutations = {
         state.user = user;
     },
     CLEAR_TOKEN(state, _payload) {
-        state.token = null;
         state.user = null;
-    },
-    CREATE_POST(state, post) {
-        state.posts.push(post)
-    },
-    EDIT_POST(state, post) {
-        let index = state.posts.findIndex(record => record.id === post.id)
-        if (index >= 0) {
-            state.posts[index] = { ...post }
-        }
+        state.token = null;
 
-
-    }
+    },
 }
 
 export const getters = {
