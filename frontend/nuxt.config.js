@@ -49,13 +49,26 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     "nuxt-quasar",
-    ["@nuxtjs/proxy", { pathRewrite: { "^/api": "/api" } }]
+    // ["@nuxtjs/proxy", { pathRewrite: { "^/api": "/api" } }]
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'http://nxing:8000/',
+    browserBaseURL: 'http://localhost:8000/',
+    // proxyHeaders: false,
+    // credentials: false,
+    headers: {
+      common: {
+
+        // 'Origin':'http://localhost:3000/'
+
+        // 'Access-Control-Allow-Origin': 'http://localhost:8000'
+
+      }
+    }
   },
   quasar: {
     // animations: ["fadeIn", "fadeOut"],
@@ -114,9 +127,9 @@ export default {
     mode: "out-in"
   },
 
-  proxy: {
-    "/api": "http://127.0.0.1:8000/"
-  },
+  // proxy: {
+  //   "/api": "http://nginx:8000/"
+  // },
   /*
   ** Build configuration
   */

@@ -9,15 +9,11 @@ from events_api.serializers import EventSerializer
 from rest_framework.response import Response
 
 
-# import django_filters.rest_framework
-
-
 class EventGenericView(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.UpdateModelMixin,
                        mixins.DestroyModelMixin,
                        mixins.CreateModelMixin, mixins.RetrieveModelMixin):
     authentication_classes = (TokenAuthentication, BasicAuthentication, SessionAuthentication)
     serializer_class = EventSerializer
-    # queryset = Event.objects.all()
     auth_methods = ('POST', 'PUT', 'DELETE', 'PATCH')
     search_fields = ['title']
     filter_backends = (filters.SearchFilter, filters1.DjangoFilterBackend)

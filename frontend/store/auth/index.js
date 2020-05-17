@@ -2,6 +2,7 @@
 export const actions = {
 
     authenticateUser(vuexContent, payload) {
+        localStorage.removeItem('events_spa_token');
         const { email, password1, password2, isLogin } = payload;
         let authUrl = "";
         let sendData = {};
@@ -44,6 +45,7 @@ export const actions = {
         this.$axios.setToken(`Token ${token}`);
         return this.$axios.$get(getUserUrl)
             .catch(err => {
+                localStorage.removeItem('events_spa_token');
                 console.log('SET_USER_AND_TOKEN_ERROR => ', err);
 
             })

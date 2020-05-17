@@ -7,6 +7,7 @@ class Event(models.Model):
     description = models.CharField(max_length=255, null=False, blank=False)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     event_date = models.DateTimeField(null=False)
+    notified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     class Meta:

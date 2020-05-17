@@ -11,7 +11,8 @@ from events_api.models import Event
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'date_joined')
+        fields = ('username', 'first_name',
+                  'last_name', 'email', 'date_joined')
 
 
 # МОЙ СЕРИАЛИЗАТОР РЕГИСТРАЦИИ
@@ -73,4 +74,4 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = '__all__'
-        read_only_fields = ('id', 'author')
+        read_only_fields = ('id', 'author', 'notified')

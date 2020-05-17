@@ -10,7 +10,7 @@
 
 <script>
 import TheHeader from "~/components/Navigation/TheHeader";
-import TheSideNav from "~/components/Navigation/TheSideNav";
+import TheSideNav from "~/components/Navigation/TheSidenav";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
