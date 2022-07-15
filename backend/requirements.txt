@@ -23,6 +23,6 @@ sqlparse==0.3.1
 urllib3==1.25.9
 celery==4.2.1
 django-celery-beat==1.1.1
-django-celery-results==1.0.1
+django-celery-results==2.4.0
 uwsgi==2.0.17
 django-cors-headers==3.2.1
